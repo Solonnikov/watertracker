@@ -16,6 +16,10 @@ router.get('/register', function(req, res){
 router.get('/login', function(req, res){
 	res.render('login');
 });
+// Profile
+router.get('/stat', function(req, res){
+  res.render('stat');
+});
 
 // Register User
 router.post('/register', function(req, res){
@@ -141,4 +145,11 @@ router.get('/logout', function(req, res){
 
 	res.redirect('/users/login');
 });
+// Statistics
+router.post('/',
+  passport.authenticate('local', {successRedirect:'/users/stat', failureRedirect:'/',failureFlash: true}),
+  function(req, res) {
+    res.redirect('/users/stat');
+  });
+
 module.exports = router;

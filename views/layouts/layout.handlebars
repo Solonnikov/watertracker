@@ -1,44 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>LoginApp</title>
+	<title>Water Tracker</title>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script src="https://use.fontawesome.com/635e7e0f70.js"></script>
 </head>
 <body>
- <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '109511289560393',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-// </script>
 	<div class="container">
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
             {{#if user}}
-            <li role="presentation"><a href="/">Dashboard</a></li>
+            <li role="presentation" class="active"><a href="/">Dashboard</a></li>
             <li role="presentation"><a href="/users/logout">Logout</a></li>
+             <li role="presentation"><a href="/users/stat">Statistics</a></li>
             {{else}}
             <li role="presentation"><a href="/users/login">Login</a></li>
-            <li role="presentation"><a href="/users/register">Register</a></li>
-            <li role="presentation"><a href="/auth/facebook">Facebook</a></li>
+            <li role="presentation" class="active"><a href="/users/register">Sign Up</a></li>
             {{/if}}
           </ul>
         </nav>
-        <h3 class="text-muted">loginApp</h3>
+        <h4 class="text-muted">This is your personal water tracker for life</h4>
       </div>
 
 <div class="row">
@@ -58,14 +41,8 @@
           {{{body}}}
         </div>
       </div>
-      <div
-        class="fb-like margin-top"
-        data-share="true"
-        data-width="450"
-        data-show-faces="true">
-      </div>
       <footer class="footer">
-        <p>&copy; 2017 LoginApp, Inc.</p>
+        <p>&copy; 2017 Water Tracker app, Inc.</p>
       </footer>
 
     </div> <!-- /container -->

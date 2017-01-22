@@ -104,5 +104,12 @@ body {
 footer{
   margin-top:40px;
 }
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.to-center {
+  margin: 0 auto;
+}
 Contact GitHub API Training Shop Blog About
 © 2017 GitHub, Inc. Terms Privacy Security Status Help
