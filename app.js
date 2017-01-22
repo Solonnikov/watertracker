@@ -7,8 +7,6 @@ var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -30,6 +28,8 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+require('./config/passport')(passport);
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -77,6 +77,8 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+
+require('./routes/fb-auth.js')(app, passport);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
