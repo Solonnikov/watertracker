@@ -12,26 +12,25 @@ router.get('/register', function(req, res){
 router.get('/login', function(req, res){
 	res.render('login');
 });
-// Profile
-router.get('/stat', function(req, res){
-  res.render('stat');
-});
 
 // Register User
 router.post('/register', function(req, res){
-	var name = req.body.name;
 	var email = req.body.email;
 	var username = req.body.username;
 	var password = req.body.password;
 	var password2 = req.body.password2;
+  var gender = req.body.gender;
+  var weight =  req.body.weight;
 
+  console.log(username);
 	// Validation
-	req.checkBody('name', 'Name is Required').notEmpty();
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+  req.checkBody('gender', 'Gender is requiered').notEmpty();
+  req.checkBody('weight', 'Weight is rerquired').isInt({min: 0, max: 200});
 
 	var errors = req.validationErrors();
 
@@ -41,14 +40,15 @@ router.post('/register', function(req, res){
 		});
 	} else {
 		var newUser = new User({
-			name: name,
-			email: email,
 			username: username,
-			password: password
+			password: password,
+      email: email,
+      gender: gender,
+      weight: weight
 		});
 		User.createUser(newUser, function(err, user){
 			if(err) throw err;
-			console.log(user);
+      console.log('user', user);
 		});
 
 		req.flash('success_msg', 'You are registered and can now login');
@@ -65,19 +65,12 @@ router.post('/login',
   });
 
 // Logout
-router.get('/logout', function(req, res){
+router.get('/logout', function (req, res){
 	req.logout();
 
 	req.flash('success_msg', 'You are logged out');
 
 	res.redirect('/users/login');
 });
-
-// Statistics
-router.post('/',
-  passport.authenticate('local', {successRedirect:'/users/stat', failureRedirect:'/',failureFlash: true}),
-  function(req, res) {
-    res.redirect('/users/stat');
-  });
 
 module.exports = router;

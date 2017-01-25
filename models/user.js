@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 var bcrypt	= require('bcryptjs');
 
 // User Schema
@@ -13,15 +13,19 @@ var UserSchema = mongoose.Schema({
 	email: {
 		type: String
 	},
-	name: {
+	gender: {
 		type: String
+	},
+	weight: {
+		type: Number
 	},
 	facebook: {
 		id: String,
 		token: String, 
 		email: String,
 		name: String
-	}
+	},
+	drinks : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Drink' }]
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);
@@ -50,15 +54,3 @@ module.exports.comparePassword = function (candidatePassword, hash, callback){
 		callback(null, isMatch);
 	});
 }
-
-
-
-
-
-
-
-
-
-
-
-

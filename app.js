@@ -79,7 +79,6 @@ app.use('/', routes);
 app.use('/users', users);
 
 require('./routes/fb-auth.js')(app, passport);
-
 // Set Port
 app.set('port', (process.env.PORT || 3000));
 

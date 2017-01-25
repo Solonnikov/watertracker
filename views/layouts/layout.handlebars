@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Water Tracker</title>
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-  <script src="https://use.fontawesome.com/635e7e0f70.js"></script>
+    <title>Water Tracker</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://use.fontawesome.com/635e7e0f70.js"></script>
 </head>
 <body>
-	<div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            {{#if user}}
-            <li role="presentation" class="active"><a href="/">Dashboard</a></li>
-            <li role="presentation"><a href="/users/logout">Logout</a></li>
-             <li role="presentation"><a href="/users/stat">Statistics</a></li>
-            {{else}}
-            <li role="presentation"><a href="/users/login">Login</a></li>
-            <li role="presentation" class="active"><a href="/users/register">Sign Up</a></li>
-            {{/if}}
-          </ul>
-        </nav>
-        <h4 class="text-muted">This is your personal water tracker for life</h4>
-      </div>
-
-<div class="row">
-        <div class="col-lg-12">
-          {{#if success_msg}}
-            <div class="alert alert-success">{{success_msg}}</div>
-          {{/if}}
-
-          {{#if error_msg}}
-            <div class="alert alert-danger">{{error_msg}}</div>
-          {{/if}}
-
-          {{#if error}}
-            <div class="alert alert-danger">{{error}}</div>
-          {{/if}}
-          
-          {{{body}}}
+<div class="alert alert-info bold" id="placeholder" role="alert"></div>
+    <div class="page-header container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                  {{#if user}}
+                    <li role="presentation"><a href="/">Dashboard</a></li>
+                   {{!--  <li role="presentation"><a href="/users/profile">Profile</a></li> --}}
+                    <li role="presentation"><a href="/users/logout">Logout</a></li>
+                    {{else}}
+                    <li role="presentation"><a href="/users/login">Login</a></li>
+                    <li role="presentation" class="active"><a href="/users/register">Sign Up</a></li>
+                    <li role="presentation"><a href="/auth/facebook" class="btn btn-default">Facebook</a>
+                  {{/if}}
+                </ul>
+            </nav>
         </div>
-      </div>
-      <footer class="footer">
-        <p>&copy; 2017 Water Tracker app, Inc.</p>
-      </footer>
+        <div class="row">
+            <div class="col-lg-12">
+                {{#if success_msg}}
+                  <div class="alert alert-success">{{success_msg}}</div>
+                {{/if}}
 
-    </div> <!-- /container -->
+                {{#if error_msg}}
+                  <div class="alert alert-danger">{{error_msg}}</div>
+                {{/if}}
+
+                {{#if error}}
+                  <div class="alert alert-danger">{{error}}</div>
+                {{/if}}
+                {{{body}}}
+            </div>
+        </div>
+        <footer class="footer">
+            <p>&copy; 2017 Water Tracker app, Inc.</p>
+        </footer>
+    </div>
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

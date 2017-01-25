@@ -1,6 +1,31 @@
+<div class="page-header">
+	<h3 class="page-header">Welcome to your profile, {{ user.username }}</h3>
+<div>
+<div class="row page-header">
+	<div class="col-xs-6">
+		<h4>Your Personal data:</h4>
+			<div>Gender: {{user.gender}}</div>
+			<div>Weight: {{user.weight}}</div>
+			<div>Last drink: {{user.drink}}</div>
+			<div>Amount: {{user.amount}}</div>
+		</div>
+		<div class="col-xs-6">
+			<h4 id="amount">Your recommended daily amount of water is:</h4>
+			<div><a class="btn btn-primary btn-lg">{{ user.weight }} * 35 ml</a></div>
+		</div>
+	</div>
+</div>
+	{{!-- <h4>That's you progress for today:</h4>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    60%
+    </div> --}}
 <div class="jumbotron">
-    <h1>Let's add a drink!</h1>
+    <h2>Let's add a drink!</h2>
 	<form method="post" action="/">
+{{!-- 		<div class="form-group">
+	        <input type="text" class="form-control to-center hidden" name="id" id="id" value="{{user._id}}">
+	    </div> --}}
 	    <div class="form-group">
 	        <label for="drink">Drink</label>
 	        <select type="text" class="form-control to-center" name="drink" id="drink" placeholder="Drink">
@@ -44,10 +69,23 @@
 	    <button type="submit" class="btn btn-primary btn-lg">Drink!</button>
 	</form>
 </div>
-
-<h2>Today's water</h2>
-<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-    60%
-  </div>
-</div>
+{{!-- <h3>Get Data</h3>
+<a href="/get-drink">Load Data</a>
+	<div>
+		{{# each items }}
+			<article class="item">
+				<div>drink: {{this.drink}}</div>
+				<div>amount: {{this.amount}} </div>
+				<div>id: {{this._id}}</div>
+				<div>grad: {{this.grad}}</div>
+			</article>
+		{{/each}}
+	</div> --}}
+{{!-- <h3>Update Data</h3>
+<form method="post" action="/update-drink">
+		<div class="form-group">
+	        <label for="drink">Drink</label>
+	        <input type="text" class="form-control to-center" name="id" id="id" placeholder="id">
+	    </div>
+	    <button type="submit" class="btn btn-primary btn-lg">Add</button>
+	</form> --}}
