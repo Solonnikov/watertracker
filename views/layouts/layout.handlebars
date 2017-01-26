@@ -13,13 +13,14 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                   {{#if user}}
-                    <li role="presentation"><a href="/">Dashboard</a></li>
+                  <li><h4>Welcome to your profile, {{ user.username }}!</h4></li>
+                    <li><a href="/">Dashboard</a></li>
                    {{!--  <li role="presentation"><a href="/users/profile">Profile</a></li> --}}
-                    <li role="presentation"><a href="/users/logout">Logout</a></li>
+                    <li><a href="/users/logout">Logout</a></li>
                     {{else}}
-                    <li role="presentation"><a href="/users/login">Login</a></li>
-                    <li role="presentation" class="active"><a href="/users/register">Sign Up</a></li>
-                    <li role="presentation"><a href="/auth/facebook" class="btn btn-default">Facebook</a>
+                    <li><a href="/users/login">Login</a></li>
+                    <li class="active"><a href="/users/register">Sign Up</a></li>
+                    <li><a href="/auth/facebook" class="btn btn-default">Facebook</a>
                   {{/if}}
                 </ul>
             </nav>

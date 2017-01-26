@@ -21,6 +21,7 @@ router.post('/register', function(req, res){
 	var password2 = req.body.password2;
   var gender = req.body.gender;
   var weight =  req.body.weight;
+  var norm;
 
   console.log(username);
 	// Validation
@@ -40,15 +41,15 @@ router.post('/register', function(req, res){
 		});
 	} else {
 		var newUser = new User({
-			username: username,
+      username: username,
 			password: password,
       email: email,
       gender: gender,
-      weight: weight
+      weight: weight,
+      norm: Math.fround(weight * 33 / 1000).toFixed(2)
 		});
 		User.createUser(newUser, function(err, user){
 			if(err) throw err;
-      console.log('user', user);
 		});
 
 		req.flash('success_msg', 'You are registered and can now login');
@@ -56,7 +57,6 @@ router.post('/register', function(req, res){
 		res.redirect('/users/login');
 	}
 });
-
 // Autentication
 router.post('/login',
   passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),

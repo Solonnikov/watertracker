@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var mongo = require('mongodb').MongoClient;
+var assert = require('assert');
 
 var Drink = require('../models/drink');
 
@@ -36,6 +38,24 @@ Drink.createDrink(newDrink, function(err, drink){
 
     res.redirect('/');
 });
+
+// Get drink
+var url = 'mongodb://localhost:27017/loginapp';
+
+router.get('/get-drink', function(req, res, next){
+	var resultArray = [];
+	mongo.connect(url, function(err, db){
+		assert.equal(null, err);
+		var cursor = db.collection('drinks').find();
+		cursor.forEach(function(doc, err){
+			assert.equal(null, err);
+			resultArray.push(doc);
+		}, function(){
+			db.close();
+			res.render('index', {items: resultArray});
+		});
+	})
+})
 
 // Mongo DB Realization
 
