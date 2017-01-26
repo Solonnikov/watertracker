@@ -106,14 +106,7 @@ var placeholder = document.getElementById('placeholder');
 var random = document.createTextNode(randomFacts());
 placeholder.appendChild(random);
 
-// // // Water calculator
-// // function dailyWaterAmount() {
-// // if(user.gender === 'Man') {
-// // result = user.weight * 35 + ' ml';
-// // } else if(user.gender === 'Woman') {
-// // result = user.weight * 31 + ' ml';
-// // }
-// // console.log(result);
-// // return result;
-// // }
-// // dailyWaterAmount();
+// Change progress
+document.getElementById('progress-bar').style.width="50%";
+document.getElementById('progress-bar').innerHTML = "50%";
+

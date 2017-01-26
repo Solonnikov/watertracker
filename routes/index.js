@@ -21,20 +21,22 @@ function ensureAuthenticated(req, res, next) {
 router.post('/', function(req, res) {
     var drink = req.body.drink;
     var amount = req.body.amount;
-    var date = Date();
+    var date = Date("<YYYY-mm-dd>");
+
 
 // Create new Drink Example
 var newDrink = new Drink ({
     drink: drink,
     amount: amount,
-    date: date
+    date: Date("<YYYY-mm-dd>")
 });
 
 Drink.createDrink(newDrink, function(err, drink){
     if(err) throw err;
+    console.log(newDrink.date);
 	console.log(drink);
 });
-	req.flash('success_msg', 'Drink successfully added');
+	req.flash('success_msg', 'Great! You have drunk ' + newDrink.amount + ' ml of ' + newDrink.drink + '. Go Ahead!');
 
     res.redirect('/');
 });
