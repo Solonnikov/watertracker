@@ -35,6 +35,13 @@ module.exports = function(passport) {
 			done(err, user);
 		});
 	});
+// 	passport.serializeUser(function(user, done) {
+//   done(null, user);
+// });
+
+// passport.deserializeUser(function(user, done) {
+//   done(null, user);
+// });
 
 	passport.use(new FacebookStrategy({
 			clientID: configAuth.facebookAuth.clientID,

@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var ObjectID = require('mongodb').ObjectID;
 var passport = require('passport');
 
 var User = require('../models/user');
+// var Drink = require('../models/drink');
 
 // Register
 router.get('/register', function(req, res){
@@ -48,6 +50,11 @@ router.post('/register', function(req, res){
       weight: weight,
       norm: Math.fround(weight * 33 / 1000).toFixed(2)
 		});
+
+    // newUser.save(function (err) {
+    //   if (err) throw err;
+    // });
+
 		User.createUser(newUser, function(err, user){
 			if(err) throw err;
 		});
@@ -57,6 +64,7 @@ router.post('/register', function(req, res){
 		res.redirect('/users/login');
 	}
 });
+
 // Autentication
 router.post('/login',
   passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),

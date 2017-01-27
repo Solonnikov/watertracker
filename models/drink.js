@@ -1,8 +1,12 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+, Schema = mongoose.Schema
 
 // Drink Schema
-var DrinkSchema = mongoose.Schema({
-	// _creator : { type: Number, ref: 'User' },
+var DrinkSchema = Schema({
+	// _creator: {
+	// 	type: Number, 
+	// 	ref: 'User'
+	// },
 	drink: {
 		type: String,
 		index: true

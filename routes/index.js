@@ -21,14 +21,14 @@ function ensureAuthenticated(req, res, next) {
 router.post('/', function(req, res) {
     var drink = req.body.drink;
     var amount = req.body.amount;
-    var date = Date("<YYYY-mm-dd>");
+    var date = Date();
 
 
 // Create new Drink Example
 var newDrink = new Drink ({
     drink: drink,
     amount: amount,
-    date: Date("<YYYY-mm-dd>")
+    date: Date()
 });
 
 Drink.createDrink(newDrink, function(err, drink){
@@ -40,6 +40,24 @@ Drink.createDrink(newDrink, function(err, drink){
 
     res.redirect('/');
 });
+
+// router.post('/', function(req, res) {
+//     var drink = req.body.drink;
+//     var amount = req.body.amount;
+//     var date = Date();
+
+//       var newDrink = new Drink({
+//         drink: drink,
+//         amount: amount,
+//         date: Date(),
+//         _creator: newUser._id    // assign the _id from the person
+//       });
+
+//       newDrink.save(function (err) {
+//         if (err) throw err;
+//         // thats it!
+//       });
+// });
 
 // Get drink
 var url = 'mongodb://localhost:27017/loginapp';
