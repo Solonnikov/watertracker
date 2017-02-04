@@ -5,7 +5,7 @@ var ObjectId = mongoose.Schema.ObjectId;
 var Drink = require('./drink');
 
 // User Schema
-var UserSchema = mongoose.Schema({
+var UserSchema = new mongoose.Schema({
 	username: {
 		type: String,
 		index:true

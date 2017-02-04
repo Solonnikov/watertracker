@@ -5,7 +5,7 @@ var User = require('./user');
 
 // Drink Schema
 
-var DrinkSchema = mongoose.Schema({
+var DrinkSchema = new mongoose.Schema({
 	drink: {
 		type: String,
 		index: true
@@ -16,8 +16,8 @@ var DrinkSchema = mongoose.Schema({
 	date: {
 		type: Date
 	},
-	_owner: {
-  		type: Number,
+	_creator: {
+  		type: ObjectId,
   		ref: 'User'
   	}
 });

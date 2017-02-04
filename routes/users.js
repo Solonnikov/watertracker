@@ -71,15 +71,15 @@ router.post('/register', function(req, res){
 
     User.createUser(newUser, function(err, user){
       if(err) throw err;
+      console.log(user._id);
+      // как этот ид сделать доступным в index.js?
     });
     
-
     req.flash('success_msg', 'You are registered and can now login');
 
     res.redirect('/users/login');
   }
 });
-
 
 // Autentication
 router.post('/login',

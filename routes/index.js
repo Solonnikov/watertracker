@@ -32,10 +32,20 @@ var newDrink = new Drink ({
     drink: drink,
     amount: amount,
     date: Date(),
-    // _creator: newUser._id     
+    _creator: '589613df0e897fb96dfd57c6'  
 });
+
 Drink.createDrink(newDrink, function(err, drink){
     if(err) throw err;
+});
+
+// Population with User
+Drink
+.findOne({drink: drink})
+.populate('_creator')
+.exec(function (err, story) {
+  if (err) return handleError(err);
+  console.log('The creator is %s', newDrink._creator);
 });
 
 	req.flash('success_msg', 'Great! You have drunk ' + newDrink.amount + ' ml of ' + newDrink.drink + '. Go Ahead!');
