@@ -2,12 +2,12 @@
 <html>
 <head>
     <title>Water Tracker</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/readable/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <script src="https://use.fontawesome.com/635e7e0f70.js"></script>
 </head>
 <body>
-<div class="alert alert-info bold" id="placeholder" role="alert"></div>
     <div class="page-header container">
         <div class="header clearfix">
             <nav>
@@ -15,12 +15,11 @@
                   {{#if user}}
                   <li><h4>Welcome to your profile, {{ user.username }}</h4></li>
                     <li><a href="/">Dashboard</a></li>
-                   {{!--  <li role="presentation"><a href="/users/profile">Profile</a></li> --}}
+                    <li role="presentation"><a href="/users/statistics">Statistics</a></li>
                     <li><a href="/users/logout">Logout</a></li>
                     {{else}}
                     <li><a href="/users/login">Login</a></li>
                     <li class="active"><a href="/users/register">Sign Up</a></li>
-                    <li><a href="/auth/facebook" class="btn btn-default">Facebook</a>
                   {{/if}}
                 </ul>
             </nav>

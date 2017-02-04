@@ -102,6 +102,7 @@ var facts = ['68.7% of the fresh water on Earth is trapped in glaciers.',
 return facts[Math.round(Math.random(facts.length) * 98)];
 }
 randomFacts();
+
 var placeholder = document.getElementById('placeholder');
 var random = document.createTextNode(randomFacts());
 placeholder.appendChild(random);

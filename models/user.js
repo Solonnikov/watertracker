@@ -1,12 +1,11 @@
-var mongoose = require('mongoose')
-, Schema = mongoose.Schema
+var mongoose = require('mongoose');
 var bcrypt	= require('bcryptjs');
+var ObjectId = mongoose.Schema.ObjectId;
+
+var Drink = require('./drink');
 
 // User Schema
-var UserSchema = Schema({
-	// _id: { 
-	// 	type: Number
-	// },
+var UserSchema = mongoose.Schema({
 	username: {
 		type: String,
 		index:true
@@ -26,13 +25,7 @@ var UserSchema = Schema({
 	norm: {
 		type: Number
 	},
-	facebook: {
-		id: String,
-		token: String, 
-		email: String,
-		name: String
-	},
-	drinks: [{ type: Schema.Types.ObjectId, ref: 'Drink' }]
+	drinks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Drink' }]
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);

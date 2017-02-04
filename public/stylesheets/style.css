@@ -105,3 +105,11 @@ footer{
 .bold {
   font-weight: bold;
 }
+/*fact section*/
+.padding-right {
+  padding-right: 10px;
+}
+.fact,
+.info {
+  font-size: 14px;
+}

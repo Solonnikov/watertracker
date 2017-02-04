@@ -4,19 +4,21 @@ var mongo = require('mongodb').MongoClient;
 var assert = require('assert');
 
 var Drink = require('../models/drink');
+var User = require('../models/user');
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
 	res.render('index');
 });
 
-function ensureAuthenticated(req, res, next) {
+function ensureAuthenticated (req, res, next) {
 	if(req.isAuthenticated()){
 		return next();
 	} else {
 		res.redirect('/users/login');
 	}
 }
+
 // Add drink in a body
 router.post('/', function(req, res) {
     var drink = req.body.drink;
@@ -25,39 +27,21 @@ router.post('/', function(req, res) {
 
 
 // Create new Drink Example
+
 var newDrink = new Drink ({
     drink: drink,
     amount: amount,
-    date: Date()
+    date: Date(),
+    // _creator: newUser._id     
 });
-
 Drink.createDrink(newDrink, function(err, drink){
     if(err) throw err;
-    console.log(newDrink.date);
-	console.log(drink);
 });
+
 	req.flash('success_msg', 'Great! You have drunk ' + newDrink.amount + ' ml of ' + newDrink.drink + '. Go Ahead!');
 
     res.redirect('/');
 });
-
-// router.post('/', function(req, res) {
-//     var drink = req.body.drink;
-//     var amount = req.body.amount;
-//     var date = Date();
-
-//       var newDrink = new Drink({
-//         drink: drink,
-//         amount: amount,
-//         date: Date(),
-//         _creator: newUser._id    // assign the _id from the person
-//       });
-
-//       newDrink.save(function (err) {
-//         if (err) throw err;
-//         // thats it!
-//       });
-// });
 
 // Get drink
 var url = 'mongodb://localhost:27017/loginapp';
